@@ -7,7 +7,7 @@ class Crud extends CI_Controller {
 		parent::__construct();
 		$this->load->database();
 
-
+// comen
 	}
 
 	public function index()
