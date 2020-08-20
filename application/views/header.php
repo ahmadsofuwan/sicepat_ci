@@ -181,6 +181,14 @@
           </div>
 
         </div>
+<script type="text/javascript">
+  var page =$('#namapage').html();
+  if (page == 'Show paket') {
+    page = 'paket'
+  }else{
+    page = 'gabungan'
+  }
+</script>
         <!-- /.container-fluid -->
         <!-- BODY -->
 

@@ -9,7 +9,7 @@
         <th>Tanggal</th>
         <th>Nama</th>
         <th>Jumlah</th>
-        <th>Action</th>
+        <th >Action</th>
       </tr>
     </thead>
     <tbody id="tbody">
@@ -17,13 +17,6 @@
   </table>
 </div>
 <script type="text/javascript">
-  
-  var page =$('#namapage').html();
-  if (page == 'Show paket') {
-    page = 'paket'
-  }else{
-    page = 'gabungan'
-  }
 $("#tampil").click(function() {
 var  tgl = $("#tgl").val();
       $.ajax({
@@ -43,8 +36,8 @@ var  tgl = $("#tgl").val();
                 elemt += '<td>'+a[key]['tgl']+'</td>'
                 elemt += '<td>'+a[key]['namafile']+'</td>'
                 elemt += '<td>'+jumla+'</td>'
-                elemt += '<td><a href="#"><i class="fa fa-eye"></i></a>'
-                elemt += '<a href="#" class="ml-2 edit" id="1"><i class="fa fa-book"></i></a></td>'
+                elemt += '<td><a href="<?php echo base_url('sicepat/edit/') ?>'+a[key]["id"]+'/'+page+'"><i class="fa fa-code" title ="edit"></i></a>'
+                elemt += '</td>'
               elemt += '</tr>'
           $("#tbody").append(elemt);
         }
@@ -56,10 +49,6 @@ var  tgl = $("#tgl").val();
         console.log("error");
         console.log(a)
       });
-});
-$(".edit").click(function(e) {
-    alert(e.target.id);
-
 });
 
 </script>
