@@ -6,9 +6,7 @@
     <div class="col-8">
       <div class="form-group">
         <label for="">DATA:</label>
-        <textarea class="form-control" rows="20%" id="file">
-          <?php echo $dat->file; ?>
-        </textarea>
+        <textarea class="form-control" rows="20%" id="file"><?php echo $dat->file; ?></textarea>
       </div>
     </div>
 </div>
