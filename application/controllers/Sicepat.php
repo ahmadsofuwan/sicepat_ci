@@ -50,6 +50,14 @@ class Sicepat extends CI_Controller {
 		$this->load->view('Edit/index.php',$res);
 		$this->load->view('footer');
 	}
+	public function mobile_scaner()
+	{
+		$data['title']='Scaner'; 
+		$this->load->view('header', $data, FALSE);
+		$this->load->view('Mobile/Scaner');
+		$this->load->view('footer');
+
+	}
 
 
 

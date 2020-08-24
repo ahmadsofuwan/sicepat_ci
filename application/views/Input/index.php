@@ -77,7 +77,7 @@
 		$lang = 12;
 	};
  ?>
-}
+
 
 
 <div class="container-fluid">
