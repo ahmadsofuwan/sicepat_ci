@@ -1,6 +1,5 @@
-<script type="<?php echo base_url(); ?>assets/js/instascan.js"></script>
-<script type="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
-<div class="contaner-fluid ml-3">
+
+<!-- <div class="contaner-fluid ml-3">
 	<div class="row">
 		<div class="col-1">
 			<button class="btn btn-primary">Simpan</button>
@@ -18,4 +17,25 @@
     		</video>
 <script type="text/javascript">
 	let scanner = new Instascan.Scanner({ video: document.getElementById('scaner') });
-</script>
+</script> -->
+
+<video id="preview"></video>
+    <script>
+        let scanner = new Instascan.Scanner(
+            {
+                video: document.getElementById('preview')
+            }
+        );
+        scanner.addListener('scan', function(content) {
+            alert('Do you want to open this page?: ' + content);
+            window.open(content, "_blank");
+        });
+        Instascan.Camera.getCameras().then(cameras => 
+        {
+            if(cameras.length > 0){
+                scanner.start(cameras[0]);
+            } else {
+                console.error("Please enable Camera!");
+            }
+        });
+    </script>
