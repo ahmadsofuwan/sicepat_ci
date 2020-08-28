@@ -1,3 +1,23 @@
+<div class="windows8">
+      <div class="wBall" id="wBall_1">
+        <div class="wInnerBall"></div>
+      </div>
+      <div class="wBall" id="wBall_2">
+        <div class="wInnerBall"></div>
+      </div>
+      <div class="wBall" id="wBall_3">
+        <div class="wInnerBall"></div>
+      </div>
+      <div class="wBall" id="wBall_4">
+        <div class="wInnerBall"></div>
+      </div>
+      <div class="wBall" id="wBall_5">
+        <div class="wInnerBall"></div>
+      </div>
+    </div>
+    <!-- loading -->
+    
+    <!-- loading  -->
 </div>
       <!-- End of Main Content -->
 </div>
@@ -28,7 +48,14 @@
   <!-- Page level custom scripts -->
   <script src="<?= base_url() ?>assets/js/demo/chart-area-demo.js"></script>
   <script src="<?= base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
-		
+	<script type="text/javascript">
+   let loading = $('.windows8');
+   window.addEventListener('load',function(){
+      setTimeout(function(){
+       loading.hide(); 
+      }, 1000);
+   })
+  </script>
 		
 
 </body>

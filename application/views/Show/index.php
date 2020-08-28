@@ -18,6 +18,7 @@
 </div>
 <script type="text/javascript">
 $("#tampil").click(function() {
+$('.windows8').show();
 var  tgl = $("#tgl").val();
       $.ajax({
         url: '<?php echo base_url("Crud/show") ?>',
@@ -41,7 +42,10 @@ var  tgl = $("#tgl").val();
               elemt += '</tr>'
           $("#tbody").append(elemt);
         }
-
+      setTimeout(function(){ 
+        $('.windows8').hide(); 
+      }, 1000);
+      
 
 
       })

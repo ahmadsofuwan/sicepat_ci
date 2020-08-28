@@ -56,6 +56,23 @@
 		  <label for="comment">masukan Resi/Gabungan:</label>
 		  <textarea class="form-control" rows="5" id="listinput"></textarea>
 		</div>
+		<div class="windows8" id="modalload">
+	      <div class="wBall" id="wBall_1">
+	        <div class="wInnerBall"></div>
+	      </div>
+	      <div class="wBall" id="wBall_2">
+	        <div class="wInnerBall"></div>
+	      </div>
+	      <div class="wBall" id="wBall_3">
+	        <div class="wInnerBall"></div>
+	      </div>
+	      <div class="wBall" id="wBall_4">
+	        <div class="wInnerBall"></div>
+	      </div>
+	      <div class="wBall" id="wBall_5">
+	        <div class="wInnerBall"></div>
+	      </div>
+	    </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
@@ -64,6 +81,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
@@ -114,6 +133,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
+var  code = $("#keycode").html();
 function jumlah() {
 	jumla_coli = base_data.split('\n');
 	jumla_coli= jumla_coli.length;
@@ -136,27 +156,63 @@ function jumlah() {
 	//input list 
 
 $("#modalinputlist > div > div > div.modal-footer > button.btn.btn-primary").click(function() {
+
 	inputlist();
 });
 
-	function inputlist() {
+	async function inputlist() {
+		$("#modalload").show();
 		let data = $("#listinput").val();
 		let arrdata = data.split('\n');
 		$.each(arrdata,function(no,val) {
+			if (val.length < 10) {return;}
 			if (base_data.indexOf(val) != -1) {
 				return;
 			}else{
 				if (base_data.length >= 1) {
-						base_data += '\n' + val
+						base_data += '\n' + val 
+						$.ajax({
+							url: '<?php echo base_url("Crud/tambah") ?>',
+							type: 'POST',
+							data: {data: val, code:code},
+						    dataType: 'json',
+						})
+						.done(function() {
+							console.log("success");
+						})	
+						.fail(function() {
+							console.log("error");
+						});
 					}else{
 						base_data += val
+						$.ajax({
+							url: '<?php echo base_url("Crud/tambah") ?>',
+							type: 'POST',
+							data: {data: val, code:code},
+						    dataType: 'json',
+						})
+						.done(function() {
+							console.log("success");
+						})
+						.fail(function() {
+							console.log("error");
+						})
+						.always(function() {
+							console.log("complete");
+						});
+
 					};
-				$("#tbody").append('<tr><td>'+val+'</td></tr>');
-				jumlah();
-				$("#modalinputlist").modal('hide');
+				
+
 				
 			}
+			$("#tbody").append('<tr><td>'+val+'</td></tr>');
+			 
 		});
+		$("#modalload").hide();
+		jumlah();
+		$("#modalinputlist").modal('hide');
+		$("#listinput").val("");
 	}
 
 	//end inputlist 
@@ -210,6 +266,7 @@ $(document).ready(function() {
 						base_data += '\n' +data
 					}else{
 						base_data += data
+
 					};
 			
 				$.ajax({

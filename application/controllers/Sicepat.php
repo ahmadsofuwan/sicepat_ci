@@ -33,7 +33,7 @@ class Sicepat extends CI_Controller {
 		$this->load->view('Show/index.php');
 		$this->load->view('footer');
 	}
-	public function Show_peket($a)
+	public function Show_paket()
 	{	
 		$data['title']='Show paket'; 
 		$this->load->view('header', $data, FALSE);
