@@ -33,18 +33,33 @@ class Sicepat extends CI_Controller {
 		$this->load->view('Show/index.php');
 		$this->load->view('footer');
 	}
-	public function Show_peket()
-	{
+	public function Show_paket()
+	{	
 		$data['title']='Show paket'; 
 		$this->load->view('header', $data, FALSE);
 		$this->load->view('Show/index.php');
 		$this->load->view('footer');
 	}
+	public function edit($id='',$dba='')
+	{
+		$this->load->database();
+		$data['title']='Edit_'.$dba; 
+		$this->load->model('Output_models');
+		$res['datanya'] = $this->Output_models->edit($id,$dba)->result();
+		$this->load->view('header', $data);
+		$this->load->view('Edit/index.php',$res);
+		$this->load->view('footer');
+	}
+	public function mobile_scaner()
+	{
+		$data['title']='Scaner'; 
+		$this->load->view('header', $data, FALSE);
+		$this->load->view('Mobile/Scaner');
+		$this->load->view('footer');
+
+	}
 
 
 
-
-/* End of file Sicepat.php */
-/* Location: ./application/controllers/Sicepat.php */
 
  } ?>

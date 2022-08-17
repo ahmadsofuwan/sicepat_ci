@@ -44,6 +44,11 @@ class  Output_models extends CI_Model
 		return $this->db->get_where('file_'.$y['db'],array('tgl' =>$y['tgl']))->result();
 
 	}
+	public function edit($id,$dba)
+	{
+		$this->db->where('id', $id);
+		return $query = $this->db->get('file_'.$dba);
+	}
 
 
 
